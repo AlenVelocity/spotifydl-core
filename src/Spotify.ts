@@ -15,7 +15,7 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     /**
      * Get the track details of the given track URL
-     * @param url 
+     * @param url
      * @returns {SongDetails} Track
      */
     getTrack = async (url: string): Promise<SongDetails> => {
@@ -25,7 +25,7 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     /**
      * Gets the info the given album URL
-     * @param url 
+     * @param url
      * @returns {Playlist} Album
      */
     getAlbum = async (url: string): Promise<Playlist> => {
@@ -35,7 +35,7 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     /**
      * Gets the info of the given Artist URL
-     * @param url 
+     * @param url
      * @returns {Artist} Artist
      */
     getArtist = async (url: string): Promise<Artist> => {
@@ -45,7 +45,7 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     /**
      * Gets the list of albums from the given Artists URL
-     * @param url 
+     * @param url
      * @returns {Playlist[]} Albums
      */
     getArtistAlbums = async (
@@ -83,7 +83,10 @@ export default class SpotifyFetcher extends SpotifyApi {
      * @param filename file to save to
      * @returns `buffer` if no filename is provided and `string` if it is
      */
-    downloadTrack = async <T extends undefined | string>(url: string, filename?: T): Promise<T extends undefined ? Buffer : string> => {
+    downloadTrack = async <T extends undefined | string>(
+        url: string,
+        filename?: T
+    ): Promise<T extends undefined ? Buffer : string> => {
         await this.verifyCredentials()
         const info = await this.getTrack(url)
         const link = await getYtlink(`${info.name} ${info.artists[0]}`)
@@ -99,5 +102,4 @@ export default class SpotifyFetcher extends SpotifyApi {
         /* eslint-disable @typescript-eslint/no-explicit-any */
         return data as any
     }
-
 }

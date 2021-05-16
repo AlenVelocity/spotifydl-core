@@ -1,6 +1,6 @@
 {
   "name": "spotifydl-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Spotify downloader for node",
   "main": "dist/index.js",
   "files": [
