@@ -1,8 +1,8 @@
 export interface ISong {
-    name: string,
-    artists: string[],
-    album_name: string,
-    release_date: string,
+    name: string
+    artists: string[]
+    album_name: string
+    release_date: string
     cover_url: string
 }
 
