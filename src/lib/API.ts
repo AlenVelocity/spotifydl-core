@@ -121,7 +121,7 @@ export default class SpotifyApi {
 }
 
 export interface IAuth {
-    clientID: string
+    clientId: string
     clientSecret: string
 }
 

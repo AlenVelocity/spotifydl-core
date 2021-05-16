@@ -29,7 +29,7 @@ import Spotify from 'spotifydl-core'
 
 const spotify = new Spotify({
     clientId: 'your-client-id',
-    clientSecrect: 'clientSecret'
+    clientSecrect: 'your-client-secret'
 })
 ```
 
