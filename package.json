@@ -8,7 +8,8 @@
   ],
   "types": "dist",
   "scripts": {
-    "test": "node tests"
+    "test": "node tests",
+    "prettier-format": "prettier --config .prettierrc \"src/**/*.ts\" --write"
   },
   "repository": {
     "type": "git",
