@@ -8,14 +8,14 @@ import axios from 'axios'
 /**
  * Function to download the give `YTURL`
  * @param {string} url The youtube URL to download
- * @returns `Buffer` 
+ * @returns `Buffer`
  * @throws Error if the URL is invalid
  */
 export const download = async (url: string): Promise<Buffer> => {
     if (!ytdl.validateURL(url)) throw new SpotifyDlError('Invalid YT URL', 'SpotifyDlError')
     const filename = `${os.tmpdir()}/${Math.random().toString(36).slice(-5)}.mp3`
     const stream = createWriteStream(filename)
-    ytdl(url,{
+    ytdl(url, {
         quality: 'highestaudio'
     }).pipe(stream)
     return await new Promise((resolve, reject) => {
@@ -39,7 +39,7 @@ export const downloadAndSave = async (url: string, filename = './spotifydl-core.
     try {
         await writeFile(filename, audio)
         return filename
-    } catch(err) {
+    } catch (err) {
         throw new SpotifyDlError(`Error While writing to File: ${filename}`)
     }
 }
@@ -49,4 +49,5 @@ export const downloadAndSave = async (url: string, filename = './spotifydl-core.
  * @param url URL to get Buffer of
  * @returns Buffer
  */
-export const getBufferFromUrl = async (url: string): Promise<Buffer> => ( await axios.get(url, { responseType: 'arraybuffer'})).data
+export const getBufferFromUrl = async (url: string): Promise<Buffer> =>
+    (await axios.get(url, { responseType: 'arraybuffer' })).data

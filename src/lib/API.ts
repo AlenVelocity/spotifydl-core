@@ -6,17 +6,14 @@ import SongDetails from './details/Song'
 const MAX_LIMIT_DEFAULT = 50
 
 export default class SpotifyApi {
-    
     private spotifyAPI: SpotifyAPI
 
     constructor(private auth: IAuth) {
-        this.spotifyAPI = new SpotifyAPI(
-            this.auth
-        )
+        this.spotifyAPI = new SpotifyAPI(this.auth)
     }
 
     checkCredentials = async (): Promise<void> => {
-        if (!await this.spotifyAPI.getRefreshToken()) return void await this.requestTokens()
+        if (!(await this.spotifyAPI.getRefreshToken())) return void (await this.requestTokens())
         await this.refreshToken()
     }
 
@@ -35,8 +32,8 @@ export default class SpotifyApi {
         const data = (await this.spotifyAPI.getTrack(trackId)).body
         const details = new SongDetails()
         details.name = data.name
-        data.artists.forEach(artist => {
-          details.artists.push(artist.name)
+        data.artists.forEach((artist) => {
+            details.artists.push(artist.name)
         })
         details.album_name = data.album.name
         details.release_date = data.album.release_date
@@ -45,89 +42,68 @@ export default class SpotifyApi {
     }
 
     extractPlaylist = async (playlistId: string): Promise<Playlist> => {
-        const data = (await this.spotifyAPI.getPlaylist(
-          playlistId,
-        )).body
-        const details = new Playlist(
-          '',
-          0,
-          data.tracks.items.map(item => item.track.id),
-        )
-    
-        details.name = data.name + ' - '
-          + data.owner.display_name
-        details.total_tracks = data.tracks.total
-        if (data.tracks.next) {
-          let offset = details.tracks.length
-          while (details.tracks.length < details.total_tracks) {
-            const playlistTracksData = (await this.spotifyAPI
-              .getPlaylistTracks(
-                playlistId,
-                { limit: MAX_LIMIT_DEFAULT, offset: offset },
-              )).body
-            details.tracks = details.tracks.concat(
-              playlistTracksData.items.map(item => item.track.id),
-            )
-            offset += MAX_LIMIT_DEFAULT
-          }
-        }
-        return details
-    }
-      
-    extractAlbum = async (albumId: string): Promise<Playlist> => {
-        const data = (await this.spotifyAPI.getAlbum(
-            albumId,
-        )).body
+        const data = (await this.spotifyAPI.getPlaylist(playlistId)).body
         const details = new Playlist(
             '',
             0,
-            data.tracks.items.map(item => item.id),
+            data.tracks.items.map((item) => item.track.id)
+        )
+
+        details.name = data.name + ' - ' + data.owner.display_name
+        details.total_tracks = data.tracks.total
+        if (data.tracks.next) {
+            let offset = details.tracks.length
+            while (details.tracks.length < details.total_tracks) {
+                const playlistTracksData = (
+                    await this.spotifyAPI.getPlaylistTracks(playlistId, { limit: MAX_LIMIT_DEFAULT, offset: offset })
+                ).body
+                details.tracks = details.tracks.concat(playlistTracksData.items.map((item) => item.track.id))
+                offset += MAX_LIMIT_DEFAULT
+            }
+        }
+        return details
+    }
+
+    extractAlbum = async (albumId: string): Promise<Playlist> => {
+        const data = (await this.spotifyAPI.getAlbum(albumId)).body
+        const details = new Playlist(
+            '',
+            0,
+            data.tracks.items.map((item) => item.id)
         )
         details.name = data.name + ' - ' + data.label
         details.total_tracks = data.tracks.total
         if (data.tracks.next) {
-          let offset = details.tracks.length
-          while (details.tracks.length < data.tracks.total) {
-            const albumTracks = (await this.spotifyAPI
-              .getAlbumTracks(
-                albumId,
-                { limit: MAX_LIMIT_DEFAULT, offset: offset },
-              )).body
-            details.tracks = details.tracks
-              .concat(albumTracks.items.map(item => item.id))
-            offset += MAX_LIMIT_DEFAULT
-          }
+            let offset = details.tracks.length
+            while (details.tracks.length < data.tracks.total) {
+                const albumTracks = (
+                    await this.spotifyAPI.getAlbumTracks(albumId, { limit: MAX_LIMIT_DEFAULT, offset: offset })
+                ).body
+                details.tracks = details.tracks.concat(albumTracks.items.map((item) => item.id))
+                offset += MAX_LIMIT_DEFAULT
+            }
         }
         return details
     }
-      
+
     extractArtist = async (artistId: string): Promise<Artist> => {
         const data = (await this.spotifyAPI.getArtist(artistId)).body
-        return new Artist(
-            data.id,
-            data.name,
-            data.href,
-        )
+        return new Artist(data.id, data.name, data.href)
     }
-      
+
     extractArtistAlbums = async (artistId: string): Promise<SpotifyApi.AlbumObjectSimplified[]> => {
-        const artistAlbums = (await this.spotifyAPI.getArtistAlbums(
-          artistId,
-          { limit: MAX_LIMIT_DEFAULT },
-        )).body
+        const artistAlbums = (await this.spotifyAPI.getArtistAlbums(artistId, { limit: MAX_LIMIT_DEFAULT })).body
         let albums = artistAlbums.items
         if (artistAlbums.next) {
-          let offset = albums.length
-          while (albums.length < artistAlbums.total) {
-            const additionalArtistAlbums = (await this.spotifyAPI
-              .getArtistAlbums(
-                artistId,
-                { limit: MAX_LIMIT_DEFAULT, offset: offset },
-              )).body
-    
-            albums = albums.concat(additionalArtistAlbums.items)
-            offset += MAX_LIMIT_DEFAULT
-          }
+            let offset = albums.length
+            while (albums.length < artistAlbums.total) {
+                const additionalArtistAlbums = (
+                    await this.spotifyAPI.getArtistAlbums(artistId, { limit: MAX_LIMIT_DEFAULT, offset: offset })
+                ).body
+
+                albums = albums.concat(additionalArtistAlbums.items)
+                offset += MAX_LIMIT_DEFAULT
+            }
         }
         return albums
     }
