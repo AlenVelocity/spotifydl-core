@@ -4,12 +4,23 @@ import Playlist from './details/Playlist'
 import SongDetails from './details/Song'
 
 const MAX_LIMIT_DEFAULT = 50
+const REFRESH_ACCESS_TOKEN_SECONDS = 55 * 60
 
 export default class SpotifyApi {
     private spotifyAPI: SpotifyAPI
 
+    nextTokenRefreshTime!: Date
+
     constructor(private auth: IAuth) {
         this.spotifyAPI = new SpotifyAPI(this.auth)
+    }
+
+    verifyCredentials = async (): Promise<void> => {
+        if (!this.nextTokenRefreshTime || this.nextTokenRefreshTime < new Date()) {
+            this.nextTokenRefreshTime = new Date()
+            this.nextTokenRefreshTime.setSeconds(this.nextTokenRefreshTime.getSeconds() + REFRESH_ACCESS_TOKEN_SECONDS)
+            await this.checkCredentials()
+        }
     }
 
     checkCredentials = async (): Promise<void> => {

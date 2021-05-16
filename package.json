@@ -8,7 +8,9 @@
   ],
   "types": "dist",
   "scripts": {
+    "build": "tsc -p .",
     "test": "node tests",
+    "prepare": "npm run build",
     "prettier-format": "prettier --config .prettierrc \"src/**/*.ts\" --write"
   },
   "repository": {
