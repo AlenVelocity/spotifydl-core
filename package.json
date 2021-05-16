@@ -38,6 +38,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "fluent-ffmpeg": "^2.1.2",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "ytdl-core": "^4.8.0"
   }
 }
