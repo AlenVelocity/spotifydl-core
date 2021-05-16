@@ -1,0 +1,33 @@
+{
+  "name": "spotifydl-core",
+  "version": "0.0.1",
+  "description": "Spotify downloader for node",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alensaito1/spotifydl-core.git"
+  },
+  "keywords": [
+    "spotify",
+    "spotify-downloader",
+    "music"
+  ],
+  "author": "Alen Yohannan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alensaito1/spotifydl-core/issues"
+  },
+  "homepage": "https://github.com/alensaito1/spotifydl-core#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.11",
+    "@types/node": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "prettier": "^2.3.0",
+    "typescript": "^4.2.4"
+  }
+}
