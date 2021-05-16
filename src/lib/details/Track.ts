@@ -1,6 +1,6 @@
-import { ISong } from '../../typings'
+import { ITrack } from '../../typings'
 
-export default class SongDetails implements ISong {
+export default class TrackDetails implements ITrack {
     constructor(
         public name = '',
         public artists: string[] = [],

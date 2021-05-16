@@ -1,7 +1,7 @@
 import SpotifyAPI from 'spotify-web-api-node'
 import Artist from './details/Atrist'
 import Playlist from './details/Playlist'
-import SongDetails from './details/Song'
+import TrackDetails from './details/Track'
 
 const MAX_LIMIT_DEFAULT = 50
 const REFRESH_ACCESS_TOKEN_SECONDS = 55 * 60
@@ -39,9 +39,9 @@ export default class SpotifyApi {
         this.spotifyAPI.setAccessToken(data['access_token'])
     }
 
-    extractTrack = async (trackId: string): Promise<SongDetails> => {
+    extractTrack = async (trackId: string): Promise<TrackDetails> => {
         const data = (await this.spotifyAPI.getTrack(trackId)).body
-        const details = new SongDetails()
+        const details = new TrackDetails()
         details.name = data.name
         data.artists.forEach((artist) => {
             details.artists.push(artist.name)
