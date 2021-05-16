@@ -3,7 +3,7 @@ import Artist from './lib/details/Atrist'
 import Playlist from './lib/details/Playlist'
 import SongDetails from './lib/details/Song'
 
-export class SpotifyFetcher extends SpotifyApi {
+export default class SpotifyFetcher extends SpotifyApi {
     constructor(auth: IAuth) {
         super(auth)
     }
