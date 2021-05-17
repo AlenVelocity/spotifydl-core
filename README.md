@@ -4,46 +4,40 @@
 
 <img src="https://img.icons8.com/nolan/256/spotify.png" alt="Never gonna give up, never gonna let you down"/>
 
-### 🎵 A simple package to download music tracks from spotify. 🎵
+### 🎵 A simple package to download music tracks from spotify 🎵
 </div>
 
-# Install ⬇️
+# Installation ⬇️
 
 ```sh
 > npm i spotifydl-core
 ```
 
-## Importing 🔽
+## Intialization 
 
-> CommonJS 💛
-```JS
+You need to intialize the `Spotify` Class before acessing the methods inside it.
+
+```js
 const Spotify = require('spotifydl-core').default
-```
-> ES/TypeScript 💙
-```TS
-import Spotify from 'spotifydl-core'
-```
-## Authentication 🔐
+//import Spotify from 'spotifydl-core'
 
-```JS
-
-const spotify = new Spotify({
+const credentials = {
     clientId: 'your-client-id',
-    clientSecrect: 'your-client-secret'
-})
+    clientSecret: 'your-client-secret'
+}
+const spotify = new Spotify(credentials)
 ```
 
 ## Methods 🤖
 
-> Get Track ⏭️
+**Get Track ⏭️**
 ```JS
 await spotify.getTrack(track_url) 
 
 // For Example: track_url = 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab'
 // Input: url of the track, Type: string
 ```
-
-> Download Track/Song ⬇️
+**Download Track/Song ⬇️**
 ```JS
 await spotify.downloadTrack(track_url, file_name)
 
@@ -53,7 +47,7 @@ await spotify.downloadTrack(track_url, file_name)
 
 ```
 
-> Get Artist 👩‍🎤🧑‍🎤
+**Get Artist 👩‍🎤🧑‍🎤**
 ```JS
 await spotify.getArtist(artist_url)
 
@@ -61,7 +55,7 @@ await spotify.getArtist(artist_url)
 // Input: url of the artist, Type: string
 ```
 
-> Get Album 💽
+**Get Album 💽**
 ```JS
 await spotify.getTrack(album_url)
 
@@ -69,15 +63,15 @@ await spotify.getTrack(album_url)
 // Input: url of the album, Type: string
 ```
 
-## Usages Example 🧑‍💻
+## Usage Example 🧑‍💻
 ```JS
+const fs = require('fs-extra') 
 // Initialization and Authentication 😏
-const Spotify = require('../dist/Spotify').default // Import the library 💖
+const Spotify = require('spotifydl-core').default // Import the library 💖
 const spotify = new Spotify({ // Authentication
     clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3', // <-- add your own clientId 🤫
     clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009', // <-- add your own clientSecret 🤫
 })
-const fs = require('fs-extra') 
 /* 💥 To learn more about clientId and Secret 💥 , 
 👉 visit https://developer.spotify.com/documentation/general/guides/app-settings/ 
 */
@@ -94,7 +88,7 @@ const links = {
     const data = await spotify.getTrack(links.song) // Waiting for the data 🥱
     console.log('Downloading: ', data.name, 'by:', data.artists.join(' ')) // Keep an eye on the progress 👀
     const song = await spotify.downloadTrack(links.song) // Downloading goes brr brr 🔥 🔥 🔥
-    fs.writeFileSync('zel.mp3', song) // Let's write the buffer to the woofer (i mean file, hehehe) 🤭
+    fs.writeFileSync('song.mp3', song) // Let's write the buffer to the woofer (i mean file, hehehe) 🤭
 })()
 
 //spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
