@@ -102,4 +102,15 @@ export default class SpotifyFetcher extends SpotifyApi {
         /* eslint-disable @typescript-eslint/no-explicit-any */
         return data as any
     }
+
+    /**
+     * Downloads the tracks of a playlist
+     * @param url URL of the playlist
+     * @returns `Promise<(string|Buffer)[]>`
+     */
+    downloadPlaylist = async (url: string): Promise<(string|Buffer)[]> => {
+        await this.verifyCredentials()
+        const playlist = await this.getPlaylist(url)
+        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
+    }
 }

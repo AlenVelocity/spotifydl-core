@@ -11,10 +11,8 @@ const links = {
     song: 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab'
 };
 (async () => {
-    const data = await spotify.getTrack(links.song)
-    console.log('Downloading: ', data.name, 'by:', data.artists.join(' '))
-    const song = await spotify.downloadTrack(links.song)
-    fs.writeFileSync('zel.mp3', song)
+    const playlist = await spotify.downloadPlaylist('https://open.spotify.com/playlist/6U4No2okVPfl8w9907espx?si=c43a534550294503')
+    console.log(playlist)
 })()
 
 //spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
