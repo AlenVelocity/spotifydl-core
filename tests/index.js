@@ -11,7 +11,7 @@ const links = {
     song: 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab'
 };
 (async () => {
-    const playlist = await spotify.downloadPlaylist('https://open.spotify.com/playlist/6U4No2okVPfl8w9907espx?si=c43a534550294503')
+    const playlist = await spotify.getTracksFromPlaylist('https://open.spotify.com/playlist/6U4No2okVPfl8w9907espx?si=c43a534550294503')
     console.log(playlist)
 })()
 
