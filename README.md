@@ -2,28 +2,28 @@
 
 # Spotifydl-Core
 
-<img src="https://img.icons8.com/nolan/256/spotify.png"/>
+<img src="https://img.icons8.com/nolan/256/spotify.png" alt="Never gonna give up, never gonna let you down"/>
 
-> A simple package to download music tracks from spotify.
+### 🎵 A simple package to download music tracks from spotify. 🎵
 </div>
 
-# Install
+# Install ⬇️
 
 ```sh
 > npm i spotifydl-core
 ```
 
-## Importing 
+## Importing 🔽
 
-> CommonJS
+> CommonJS 💛
 ```JS
 const Spotify = require('spotifydl-core').default
 ```
-> ES/TypeScript
+> ES/TypeScript 💙
 ```TS
 import Spotify from 'spotifydl-core'
 ```
-## Authentication
+## Authentication 🔐
 
 ```JS
 
@@ -33,30 +33,74 @@ const spotify = new Spotify({
 })
 ```
 
-## Methods
+## Methods 🤖
 
-> Get Track
+> Get Track ⏭️
 ```JS
-await spotify.getTrack('https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab')
+await spotify.getTrack(track_url) 
+
+// For Example: track_url = 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab'
+// Input: url of the track, Type: string
 ```
 
-> Download Track
+> Download Track/Song ⬇️
 ```JS
-await spotify.downloadTrack('https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab', 'song.mp3') //It'll return buffer (promise) if you don't provide any filename
+await spotify.downloadTrack(track_url, file_name)
+
+// For Example: track_url = 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab' & file_name = 'song.mp3'
+// Input: url of the track and name of the filename, Both Type: string
+// It'll return buffer (promise) if you don't provide any filename
 
 ```
 
-> Get Artist
+> Get Artist 👩‍🎤🧑‍🎤
 ```JS
-await spotify.getArtist('https://open.spotify.com/artist/7ky9g1jEjCsjNjZbYuflUJ?si=2To3fmc-T9KuyyrQ-Qp5K')
+await spotify.getArtist(artist_url)
+
+// For Example: artist_url = 'https://open.spotify.com/artist/3B9O5mYYw89fFXkwKh7jCS'
+// Input: url of the artist, Type: string
 ```
 
-> Get Album
+> Get Album 💽
 ```JS
-await spotify.getTrack('https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg')
+await spotify.getTrack(album_url)
+
+// For Example: album_url = 'https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg'
+// Input: url of the album, Type: string
 ```
 
-# Acknowledgements
+## Usages Example 🧑‍💻
+```JS
+// Initialization and Authentication 😏
+const Spotify = require('../dist/Spotify').default // Import the library 💖
+const spotify = new Spotify({ // Authentication
+    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3', // <-- add your own clientId 🤫
+    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009', // <-- add your own clientSecret 🤫
+})
+const fs = require('fs-extra') 
+/* 💥 To learn more about clientId and Secret 💥 , 
+👉 visit https://developer.spotify.com/documentation/general/guides/app-settings/ 
+*/
 
-- [Spotify-dl](https://github.com/SwapnilSoni1999/spotify-dl)
-- [Ytdl-core](https://github.com/fent/node-ytdl-core)
+// Declaring the respective url in 'links' object 🐤
+const links = {
+    artist: 'https://open.spotify.com/artist/7ky9g1jEjCsjNjZbYuflUJ?si=2To3fmc-T9KuyyrQ-Qp5KQ', // Url of the artist you want to gather info about
+    album: 'https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg', // Url of the album you want to gather info about
+    song: 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab' // Url of the song you want to gather info about or download
+};
+
+// Engine 🚂
+(async () => {
+    const data = await spotify.getTrack(links.song) // Waiting for the data 🥱
+    console.log('Downloading: ', data.name, 'by:', data.artists.join(' ')) // Keep an eye on the progress 👀
+    const song = await spotify.downloadTrack(links.song) // Downloading goes brr brr 🔥 🔥 🔥
+    fs.writeFileSync('zel.mp3', song) // Let's write the buffer to the woofer (i mean file, hehehe) 🤭
+})()
+
+//spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
+```
+
+# 🙇‍ Special Thanks to them 
+
+- Swapnil Soni: [Spotify-dl](https://github.com/SwapnilSoni1999/spotify-dl)
+- Fent: [Ytdl-core](https://github.com/fent/node-ytdl-core)
