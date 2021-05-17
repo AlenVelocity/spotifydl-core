@@ -3,7 +3,7 @@ import SpotifyApi, { IAuth } from './lib/API'
 import Artist from './lib/details/Atrist'
 import Playlist from './lib/details/Playlist'
 import SongDetails from './lib/details/Track'
-import { downloadYTAndSave } from './lib/download'
+import { downloadYT, downloadYTAndSave } from './lib/download'
 import SpotifyDlError from './lib/Error'
 import getYtlink from './lib/getYtlink'
 import metadata from './lib/metadata'
@@ -104,6 +104,17 @@ export default class SpotifyFetcher extends SpotifyApi {
     }
 
     /**
+     * Gets the Buffer of track from the info
+     * @param info info of the track got from `spotify.getTrack()`
+     * @returns 
+     */
+    downloadTrackFromInfo = async (info: SongDetails): Promise<Buffer> => {
+        const link = await getYtlink(`${info.name} ${info.artists[0]}`)
+        if (!link) throw new SpotifyDlError(`Couldn't get a download URL for the track: ${info.name}`)
+        return await downloadYT(link)
+    }
+
+    /**
      * Downloads the tracks of a playlist
      * @param url URL of the playlist
      * @returns `Promise<(string|Buffer)[]>`
@@ -113,4 +124,46 @@ export default class SpotifyFetcher extends SpotifyApi {
         const playlist = await this.getPlaylist(url)
         return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
     }
+
+    /**
+     * Downloads the tracks of a Album
+     * @param url URL of the Album
+     * @returns `Promise<(string|Buffer)[]>`
+     */
+    downloadAlbum = async (url: string): Promise<(string|Buffer)[]> => {
+        await this.verifyCredentials()
+        const playlist = await this.getAlbum(url)
+        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
+    }
+
+    /**
+     * Gets the info of tracks from playlist URL
+     * @param url URL of the playlist
+     */
+    getTracksFromPlaylist = async (url: string): Promise<{ name: string, total_tracks: number,tracks: SongDetails[] }> => {
+        await this.verifyCredentials()
+        const playlist = await this.getPlaylist(url)
+        const tracks = await Promise.all(playlist.tracks.map((track) => this.getTrack(track)))
+        return {
+            name: playlist.name,
+            total_tracks: playlist.total_tracks,
+            tracks,
+        }
+    }
+
+    /**
+     * Gets the info of tracks from Album URL
+     * @param url URL of the playlist
+     */
+    getTracksFromAlbum = async (url: string): Promise<{ name: string, total_tracks: number,tracks: SongDetails[] }> => {
+        await this.verifyCredentials()
+        const playlist = await this.getAlbum(url)
+        const tracks = await Promise.all(playlist.tracks.map((track) => this.getTrack(track)))
+        return {
+            name: playlist.name,
+            total_tracks: playlist.total_tracks,
+            tracks,
+        }
+    }
+
 }
