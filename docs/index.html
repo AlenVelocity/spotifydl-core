@@ -61,12 +61,12 @@
 						<h1>Spotifydl-Core</h1>
 					</a>
 					<img src="https://img.icons8.com/nolan/256/spotify.png" alt="Never gonna give up, never gonna let you down"/>
-					<a href="#🎵-a-simple-package-to-download-music-tracks-from-spotify-🎵" id="🎵-a-simple-package-to-download-music-tracks-from-spotify-🎵" style="color: inherit; text-decoration: none;">
-						<h3>🎵 A simple package to download music tracks from spotify 🎵</h3>
+					<a href="#a-simple-package-to-download-music-tracks-from-spotify-🎵" id="a-simple-package-to-download-music-tracks-from-spotify-🎵" style="color: inherit; text-decoration: none;">
+						<h3>A simple package to download music tracks from spotify 🎵</h3>
 					</a>
 				</div>
-				<a href="#installation-⬇️" id="installation-⬇️" style="color: inherit; text-decoration: none;">
-					<h1>Installation ⬇️</h1>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
 				</a>
 				<pre><code class="language-sh"><span style="color: #000000">&gt; npm i spotifydl-core</span>
 </code></pre>
@@ -83,20 +83,26 @@
 <span style="color: #000000">}</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">spotify</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Spotify</span><span style="color: #000000">(</span><span style="color: #001080">credentials</span><span style="color: #000000">)</span>
 </code></pre>
-				<a href="#methods-🤖" id="methods-🤖" style="color: inherit; text-decoration: none;">
-					<h2>Methods 🤖</h2>
+				<a href="#methods" id="methods" style="color: inherit; text-decoration: none;">
+					<h2>Methods</h2>
 				</a>
+				<blockquote>
+					<p><strong>NOTE: Only some methods are shown here. Checkout the <a href="https://alensaito1.github.io/spotifydl-core/">docs</a> depth</strong></p>
+				</blockquote>
 				<p><strong>Get Track ⏭️</strong></p>
 				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getTrack</span><span style="color: #000000">(</span><span style="color: #001080">track_url</span><span style="color: #000000">) </span>
 
 <span style="color: #008000">// For Example: track_url = &#039;https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab&#039;</span>
+
 <span style="color: #008000">// Input: url of the track, Type: string</span>
 </code></pre>
 				<p><strong>Download Track/Song ⬇️</strong></p>
 				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">downloadTrack</span><span style="color: #000000">(</span><span style="color: #001080">track_url</span><span style="color: #000000">, </span><span style="color: #001080">file_name</span><span style="color: #000000">)</span>
 
 <span style="color: #008000">// For Example: track_url = &#039;https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab&#039; &amp; file_name = &#039;song.mp3&#039;</span>
+
 <span style="color: #008000">// Input: url of the track and name of the filename, Both Type: string</span>
+
 <span style="color: #008000">// It&#039;ll return buffer (promise) if you don&#039;t provide any filename</span>
 
 </code></pre>
@@ -104,41 +110,53 @@
 				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getArtist</span><span style="color: #000000">(</span><span style="color: #001080">artist_url</span><span style="color: #000000">)</span>
 
 <span style="color: #008000">// For Example: artist_url = &#039;https://open.spotify.com/artist/3B9O5mYYw89fFXkwKh7jCS&#039;</span>
+
 <span style="color: #008000">// Input: url of the artist, Type: string</span>
 </code></pre>
 				<p><strong>Get Album 💽</strong></p>
-				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getTrack</span><span style="color: #000000">(</span><span style="color: #001080">album_url</span><span style="color: #000000">)</span>
+				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getAlbum</span><span style="color: #000000">(</span><span style="color: #001080">album_url</span><span style="color: #000000">)</span>
 
 <span style="color: #008000">// For Example: album_url = &#039;https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg&#039;</span>
+
 <span style="color: #008000">// Input: url of the album, Type: string</span>
 </code></pre>
-				<a href="#usage-example-🧑💻" id="usage-example-🧑💻" style="color: inherit; text-decoration: none;">
-					<h2>Usage Example 🧑‍💻</h2>
+				<p><strong>Get Playlist 🎧</strong></p>
+				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getPlylist</span><span style="color: #000000">(</span><span style="color: #001080">playlist_url</span><span style="color: #000000">)</span>
+
+<span style="color: #008000">// Input: url of the playlist, Type: string</span>
+</code></pre>
+				<p><strong>Download an Entire playlist</strong></p>
+				<pre><code class="language-JS"><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">downloadPlaylist</span><span style="color: #000000">(</span><span style="color: #001080">playlist_url</span><span style="color: #000000">)</span>
+
+<span style="color: #008000">//It&#039;ll return an array containing the Buffer of the songs in the playlist</span>
+</code></pre>
+				<a href="#usage-example" id="usage-example" style="color: inherit; text-decoration: none;">
+					<h2>Usage Example</h2>
 				</a>
 				<pre><code class="language-JS"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fs</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;fs-extra&#039;</span><span style="color: #000000">) </span>
-<span style="color: #008000">// Initialization and Authentication 😏</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Spotify</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;spotifydl-core&#039;</span><span style="color: #000000">).</span><span style="color: #001080">default</span><span style="color: #000000"> </span><span style="color: #008000">// Import the library 💖</span>
+<span style="color: #008000">// Initialization and Authentication </span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">Spotify</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;spotifydl-core&#039;</span><span style="color: #000000">).</span><span style="color: #001080">default</span><span style="color: #000000"> </span><span style="color: #008000">// Import the library </span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">spotify</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Spotify</span><span style="color: #000000">({ </span><span style="color: #008000">// Authentication</span>
-<span style="color: #000000">    </span><span style="color: #001080">clientId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;acc6302297e040aeb6e4ac1fbdfd62c3&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// &lt;-- add your own clientId 🤫</span>
-<span style="color: #000000">    </span><span style="color: #001080">clientSecret:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;0e8439a1280a43aba9a5bc0a16f3f009&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// &lt;-- add your own clientSecret 🤫</span>
+<span style="color: #000000">    </span><span style="color: #001080">clientId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;acc6302297e040aeb6e4ac1fbdfd62c3&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// &lt;-- add your own clientId </span>
+<span style="color: #000000">    </span><span style="color: #001080">clientSecret:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;0e8439a1280a43aba9a5bc0a16f3f009&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// &lt;-- add your own clientSecret </span>
 <span style="color: #000000">})</span>
-<span style="color: #008000">/* 💥 To learn more about clientId and Secret 💥 , </span>
-<span style="color: #008000">👉 visit https://developer.spotify.com/documentation/general/guides/app-settings/ </span>
+<span style="color: #008000">/* To learn more about clientId and Secret  , </span>
+<span style="color: #008000">visit https://developer.spotify.com/documentation/general/guides/app-settings/ </span>
 <span style="color: #008000">*/</span>
 
-<span style="color: #008000">// Declaring the respective url in &#039;links&#039; object 🐤</span>
+<span style="color: #008000">// Declaring the respective url in &#039;links&#039; object </span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">links</span><span style="color: #000000"> = {</span>
 <span style="color: #000000">    </span><span style="color: #001080">artist:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://open.spotify.com/artist/7ky9g1jEjCsjNjZbYuflUJ?si=2To3fmc-T9KuyyrQ-Qp5KQ&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// Url of the artist you want to gather info about</span>
 <span style="color: #000000">    </span><span style="color: #001080">album:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// Url of the album you want to gather info about</span>
 <span style="color: #000000">    </span><span style="color: #001080">song:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab&#039;</span><span style="color: #000000"> </span><span style="color: #008000">// Url of the song you want to gather info about or download</span>
 <span style="color: #000000">};</span>
 
-<span style="color: #008000">// Engine 🚂</span>
+<span style="color: #008000">// Engine </span>
 <span style="color: #000000">(</span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">data</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">getTrack</span><span style="color: #000000">(</span><span style="color: #001080">links</span><span style="color: #000000">.</span><span style="color: #001080">song</span><span style="color: #000000">) </span><span style="color: #008000">// Waiting for the data 🥱</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Downloading: &#039;</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;by:&#039;</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">artists</span><span style="color: #000000">.</span><span style="color: #795E26">join</span><span style="color: #000000">(</span><span style="color: #A31515">&#039; &#039;</span><span style="color: #000000">)) </span><span style="color: #008000">// Keep an eye on the progress 👀</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">downloadTrack</span><span style="color: #000000">(</span><span style="color: #001080">links</span><span style="color: #000000">.</span><span style="color: #001080">song</span><span style="color: #000000">) </span><span style="color: #008000">// Downloading goes brr brr 🔥 🔥 🔥</span>
-<span style="color: #000000">    </span><span style="color: #001080">fs</span><span style="color: #000000">.</span><span style="color: #795E26">writeFileSync</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;song.mp3&#039;</span><span style="color: #000000">, </span><span style="color: #001080">song</span><span style="color: #000000">) </span><span style="color: #008000">// Let&#039;s write the buffer to the woofer (i mean file, hehehe) 🤭</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Downloading: &#039;</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;by:&#039;</span><span style="color: #000000">, </span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">artists</span><span style="color: #000000">.</span><span style="color: #795E26">join</span><span style="color: #000000">(</span><span style="color: #A31515">&#039; &#039;</span><span style="color: #000000">)) </span><span style="color: #008000">// Keep an eye on the progress</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">spotify</span><span style="color: #000000">.</span><span style="color: #795E26">downloadTrack</span><span style="color: #000000">(</span><span style="color: #001080">links</span><span style="color: #000000">.</span><span style="color: #001080">song</span><span style="color: #000000">) </span><span style="color: #008000">// Downloading goes brr brr </span>
+<span style="color: #000000">    </span><span style="color: #001080">fs</span><span style="color: #000000">.</span><span style="color: #795E26">writeFileSync</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;song.mp3&#039;</span><span style="color: #000000">, </span><span style="color: #001080">song</span><span style="color: #000000">) </span><span style="color: #008000">// Let&#039;s write the buffer to the woofer (i mean file, hehehe) </span>
 <span style="color: #000000">})()</span>
 
 <span style="color: #008000">//spotify.verifyCredentials().then(() =&gt; Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))</span>

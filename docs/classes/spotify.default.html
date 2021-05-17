@@ -99,8 +99,10 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#checkcredentials" class="tsd-kind-icon">check<wbr>Credentials</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#downloadalbum" class="tsd-kind-icon">download<wbr>Album</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#downloadplaylist" class="tsd-kind-icon">download<wbr>Playlist</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="spotify.default.html#downloadtrack" class="tsd-kind-icon">download<wbr>Track</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#downloadtrackfrominfo" class="tsd-kind-icon">download<wbr>Track<wbr>From<wbr>Info</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#extractalbum" class="tsd-kind-icon">extract<wbr>Album</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#extractartist" class="tsd-kind-icon">extract<wbr>Artist</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#extractartistalbums" class="tsd-kind-icon">extract<wbr>Artist<wbr>Albums</a></li>
@@ -112,6 +114,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#getid" class="tsd-kind-icon">getID</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#getplaylist" class="tsd-kind-icon">get<wbr>Playlist</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#gettrack" class="tsd-kind-icon">get<wbr>Track</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#gettracksfromalbum" class="tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Album</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="spotify.default.html#gettracksfromplaylist" class="tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Playlist</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#refreshtoken" class="tsd-kind-icon">refresh<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#requesttokens" class="tsd-kind-icon">request<wbr>Tokens</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="spotify.default.html#verifycredentials" class="tsd-kind-icon">verify<wbr>Credentials</a></li>
@@ -133,7 +137,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides SpotifyApi.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L11">Spotify.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L11">Spotify.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -156,7 +160,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from SpotifyApi.nextTokenRefreshTime</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L12">lib/API.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L12">lib/API.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,10 +178,42 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.checkCredentials</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L26">lib/API.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L26">lib/API.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="downloadalbum" class="tsd-anchor"></a>
+					<h3>download<wbr>Album</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">download<wbr>Album<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L133">Spotify.ts:133</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Downloads the tracks of a Album</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL of the Album</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p><code>Promise&lt;(string|Buffer)[]&gt;</code></p>
 						</li>
 					</ul>
 				</section>
@@ -191,7 +227,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L111">Spotify.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L122">Spotify.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -223,7 +259,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L86">Spotify.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L86">Spotify.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -257,6 +293,37 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="downloadtrackfrominfo" class="tsd-anchor"></a>
+					<h3>download<wbr>Track<wbr>From<wbr>Info</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">download<wbr>Track<wbr>From<wbr>Info<span class="tsd-signature-symbol">(</span>info<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L111">Spotify.ts:111</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the Buffer of track from the info</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>info: <span class="tsd-signature-type">default</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>info of the track got from <code>spotify.getTrack()</code></p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="extractalbum" class="tsd-anchor"></a>
 					<h3>extract<wbr>Album</h3>
@@ -268,7 +335,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.extractAlbum</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L78">lib/API.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L78">lib/API.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,7 +359,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.extractArtist</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L100">lib/API.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L100">lib/API.ts:100</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -316,7 +383,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.extractArtistAlbums</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L105">lib/API.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L105">lib/API.ts:105</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -340,7 +407,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.extractPlaylist</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L55">lib/API.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L55">lib/API.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -364,7 +431,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.extractTrack</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L42">lib/API.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L42">lib/API.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -387,7 +454,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L31">Spotify.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L31">Spotify.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L41">Spotify.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L41">Spotify.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -445,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L51">Spotify.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L51">Spotify.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -474,7 +541,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L75">Spotify.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L75">Spotify.ts:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -497,7 +564,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L71">Spotify.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L71">Spotify.ts:71</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -520,7 +587,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/Spotify.ts#L21">Spotify.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L21">Spotify.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -539,6 +606,68 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gettracksfromalbum" class="tsd-anchor"></a>
+					<h3>get<wbr>Tracks<wbr>From<wbr>Album</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Album<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>total_tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L158">Spotify.ts:158</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the info of tracks from Album URL</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL of the playlist</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>total_tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gettracksfromplaylist" class="tsd-anchor"></a>
+					<h3>get<wbr>Tracks<wbr>From<wbr>Playlist</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Playlist<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>total_tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/Spotify.ts#L143">Spotify.ts:143</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the info of tracks from playlist URL</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL of the playlist</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>total_tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>tracks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="refreshtoken" class="tsd-anchor"></a>
 					<h3>refresh<wbr>Token</h3>
@@ -550,7 +679,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.refreshToken</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L37">lib/API.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L37">lib/API.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -568,7 +697,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.requestTokens</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L31">lib/API.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L31">lib/API.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -586,7 +715,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from SpotifyApi.verifyCredentials</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/85244cf/src/lib/API.ts#L18">lib/API.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/AlenSaito1/spotifydl-core/blob/75d6f42/src/lib/API.ts#L18">lib/API.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -626,10 +755,16 @@
 								<a href="spotify.default.html#checkcredentials" class="tsd-kind-icon">check<wbr>Credentials</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="spotify.default.html#downloadalbum" class="tsd-kind-icon">download<wbr>Album</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="spotify.default.html#downloadplaylist" class="tsd-kind-icon">download<wbr>Playlist</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="spotify.default.html#downloadtrack" class="tsd-kind-icon">download<wbr>Track</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="spotify.default.html#downloadtrackfrominfo" class="tsd-kind-icon">download<wbr>Track<wbr>From<wbr>Info</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="spotify.default.html#extractalbum" class="tsd-kind-icon">extract<wbr>Album</a>
@@ -663,6 +798,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="spotify.default.html#gettrack" class="tsd-kind-icon">get<wbr>Track</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="spotify.default.html#gettracksfromalbum" class="tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Album</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="spotify.default.html#gettracksfromplaylist" class="tsd-kind-icon">get<wbr>Tracks<wbr>From<wbr>Playlist</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="spotify.default.html#refreshtoken" class="tsd-kind-icon">refresh<wbr>Token</a>
