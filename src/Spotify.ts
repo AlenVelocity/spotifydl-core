@@ -71,13 +71,13 @@ export default class SpotifyFetcher extends SpotifyApi {
     /**
      * Gets the playlist info from URL
      * @param url URL of the playlist
-     * @returns 
+     * @returns
      */
     getPlaylist = async (url: string): Promise<Playlist> => {
         await this.verifyCredentials()
         return await this.extractPlaylist(this.getID(url))
     }
-    
+
     getID = (url: string): string => {
         const splits = url.split('/')
         return splits[splits.length - 1]
@@ -112,7 +112,7 @@ export default class SpotifyFetcher extends SpotifyApi {
     /**
      * Gets the Buffer of track from the info
      * @param info info of the track got from `spotify.getTrack()`
-     * @returns 
+     * @returns
      */
     downloadTrackFromInfo = async (info: SongDetails): Promise<Buffer> => {
         const link = await getYtlink(`${info.name} ${info.artists[0]}`)
@@ -120,16 +120,18 @@ export default class SpotifyFetcher extends SpotifyApi {
         return await downloadYT(link)
     }
 
-    private downloadBatch = async (url: string, type: 'album' | 'playlist'): Promise<(string|Buffer)[]> => {
+    private downloadBatch = async (url: string, type: 'album' | 'playlist'): Promise<(string | Buffer)[]> => {
         await this.verifyCredentials()
-        const playlist = await this[(type === 'album') ? 'getAlbum' : 'getPlaylist'](url)
-        return Promise.all(playlist.tracks.map(async (track) => {
-            try {
-                return await this.downloadTrack(track)
-            } catch(err) {
-                return ''
-            }
-        }))
+        const playlist = await this[type === 'album' ? 'getAlbum' : 'getPlaylist'](url)
+        return Promise.all(
+            playlist.tracks.map(async (track) => {
+                try {
+                    return await this.downloadTrack(track)
+                } catch (err) {
+                    return ''
+                }
+            })
+        )
     }
 
     /**
@@ -137,28 +139,29 @@ export default class SpotifyFetcher extends SpotifyApi {
      * @param url URL of the playlist
      * @returns `Promise<(string|Buffer)[]>`
      */
-    downloadPlaylist = async (url: string): Promise<(string|Buffer)[]> => await this.downloadBatch(url, 'playlist')
-    
+    downloadPlaylist = async (url: string): Promise<(string | Buffer)[]> => await this.downloadBatch(url, 'playlist')
 
     /**
      * Downloads the tracks of a Album
      * @param url URL of the Album
      * @returns `Promise<(string|Buffer)[]>`
      */
-    downloadAlbum = async (url: string): Promise<(string|Buffer)[]> => await this.downloadBatch(url, 'album')
+    downloadAlbum = async (url: string): Promise<(string | Buffer)[]> => await this.downloadBatch(url, 'album')
 
     /**
      * Gets the info of tracks from playlist URL
      * @param url URL of the playlist
      */
-    getTracksFromPlaylist = async (url: string): Promise<{ name: string, total_tracks: number,tracks: SongDetails[] }> => {
+    getTracksFromPlaylist = async (
+        url: string
+    ): Promise<{ name: string; total_tracks: number; tracks: SongDetails[] }> => {
         await this.verifyCredentials()
         const playlist = await this.getPlaylist(url)
         const tracks = await Promise.all(playlist.tracks.map((track) => this.getTrack(track)))
         return {
             name: playlist.name,
             total_tracks: playlist.total_tracks,
-            tracks,
+            tracks
         }
     }
 
@@ -166,15 +169,16 @@ export default class SpotifyFetcher extends SpotifyApi {
      * Gets the info of tracks from Album URL
      * @param url URL of the playlist
      */
-    getTracksFromAlbum = async (url: string): Promise<{ name: string, total_tracks: number,tracks: SongDetails[] }> => {
+    getTracksFromAlbum = async (
+        url: string
+    ): Promise<{ name: string; total_tracks: number; tracks: SongDetails[] }> => {
         await this.verifyCredentials()
         const playlist = await this.getAlbum(url)
         const tracks = await Promise.all(playlist.tracks.map((track) => this.getTrack(track)))
         return {
             name: playlist.name,
             total_tracks: playlist.total_tracks,
-            tracks,
+            tracks
         }
     }
-
 }
