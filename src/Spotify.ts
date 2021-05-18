@@ -68,10 +68,16 @@ export default class SpotifyFetcher extends SpotifyApi {
         }
     }
 
+    /**
+     * Gets the playlist info from URL
+     * @param url URL of the playlist
+     * @returns 
+     */
     getPlaylist = async (url: string): Promise<Playlist> => {
         await this.verifyCredentials()
         return await this.extractPlaylist(this.getID(url))
     }
+    
     getID = (url: string): string => {
         const splits = url.split('/')
         return splits[splits.length - 1]
@@ -114,27 +120,26 @@ export default class SpotifyFetcher extends SpotifyApi {
         return await downloadYT(link)
     }
 
+    private downloadBatch = async (url: string, type: 'album' | 'playlist'): Promise<(string|Buffer)[]> => {
+        await this.verifyCredentials()
+        const playlist = await this[(type === 'album') ? 'getAlbum' : 'getPlaylist'](url)
+        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
+    }
+
     /**
      * Downloads the tracks of a playlist
      * @param url URL of the playlist
      * @returns `Promise<(string|Buffer)[]>`
      */
-    downloadPlaylist = async (url: string): Promise<(string|Buffer)[]> => {
-        await this.verifyCredentials()
-        const playlist = await this.getPlaylist(url)
-        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
-    }
+    downloadPlaylist = async (url: string): Promise<(string|Buffer)[]> => await this.downloadBatch(url, 'playlist')
+    
 
     /**
      * Downloads the tracks of a Album
      * @param url URL of the Album
      * @returns `Promise<(string|Buffer)[]>`
      */
-    downloadAlbum = async (url: string): Promise<(string|Buffer)[]> => {
-        await this.verifyCredentials()
-        const playlist = await this.getAlbum(url)
-        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
-    }
+    downloadAlbum = async (url: string): Promise<(string|Buffer)[]> => await this.downloadBatch(url, 'album')
 
     /**
      * Gets the info of tracks from playlist URL
