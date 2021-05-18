@@ -29,7 +29,7 @@ const spotify = new Spotify(credentials)
 ```
 
 ## Methods 
-> **NOTE: Only some methods are shown here. Checkout the [docs](https://alensaito1.github.io/spotifydl-core/) depth**
+> **NOTE: Only some methods are shown here. Checkout the [docs](https://alensaito1.github.io/spotifydl-core/) for a more in-depth documentation**
 
 **Get Track ⏭️**
 ```JS
