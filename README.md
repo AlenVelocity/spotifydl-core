@@ -116,7 +116,7 @@ const links = {
 //spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
 ```
 
-# 🙇‍ Special Thanks to them 
+# 🙇‍ Special Thanks
 
 - Swapnil Soni: [Spotify-dl](https://github.com/SwapnilSoni1999/spotify-dl)
 - Fent: [Ytdl-core](https://github.com/fent/node-ytdl-core)
