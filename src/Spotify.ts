@@ -123,7 +123,13 @@ export default class SpotifyFetcher extends SpotifyApi {
     private downloadBatch = async (url: string, type: 'album' | 'playlist'): Promise<(string|Buffer)[]> => {
         await this.verifyCredentials()
         const playlist = await this[(type === 'album') ? 'getAlbum' : 'getPlaylist'](url)
-        return await Promise.all(playlist.tracks.map((track) => this.downloadTrack(track)))
+        return Promise.all(playlist.tracks.map(async (track) => {
+            try {
+                return await this.downloadTrack(track)
+            } catch(err) {
+                return ''
+            }
+        }))
     }
 
     /**
