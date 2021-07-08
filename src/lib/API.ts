@@ -118,6 +118,11 @@ export default class SpotifyApi {
         }
         return albums
     }
+
+    getUser = async (id: string): Promise<UserObjectPublic> => {
+        await this.verifyCredentials()
+        return await this.spotifyAPI.getUser(id) as UserObjectPublic
+    }
 }
 
 export interface IAuth {
@@ -130,4 +135,27 @@ interface ClientCredentialsGrantResponseEX {
     expires_in: number
     token_type: string
     refresh_token: string
+}
+
+export interface UserObjectPublic {
+    display_name?: string
+    external_urls?: {
+        spotify :string
+    };
+    followers?: {
+        href?: null,
+        total: string
+    }
+    href?: string;
+    id?: string
+    images?: ImageObject[]
+    type?: "user"
+    uri?: string
+}
+
+export interface  ImageObject {
+
+    height?: number;
+    url: string;
+    width?: number;
 }

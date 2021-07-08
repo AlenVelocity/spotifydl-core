@@ -1,5 +1,5 @@
 import { promises, unlink } from 'fs-extra'
-import SpotifyApi, { IAuth } from './lib/API'
+import SpotifyApi, { IAuth, UserObjectPublic } from './lib/API'
 import Artist from './lib/details/Atrist'
 import Playlist from './lib/details/Playlist'
 import SongDetails from './lib/details/Track'
@@ -181,4 +181,7 @@ export default class SpotifyFetcher extends SpotifyApi {
             tracks
         }
     }
+
+    getSpotifyUser = async (id: string): Promise<UserObjectPublic> => await this.getUser(id)
+
 }
