@@ -57,7 +57,7 @@ export default class SpotifyApi {
         const details = new Playlist(
             '',
             0,
-            data.tracks.items.map((item) => item.track.id)
+            data.tracks.items.map((item) => item.track!.id)
         )
 
         details.name = data.name + ' - ' + data.owner.display_name
@@ -68,7 +68,7 @@ export default class SpotifyApi {
                 const playlistTracksData = (
                     await this.spotifyAPI.getPlaylistTracks(playlistId, { limit: MAX_LIMIT_DEFAULT, offset: offset })
                 ).body
-                details.tracks = details.tracks.concat(playlistTracksData.items.map((item) => item.track.id))
+                details.tracks = details.tracks.concat(playlistTracksData.items.map((item) => item.track!.id))
                 offset += MAX_LIMIT_DEFAULT
             }
         }
@@ -121,7 +121,7 @@ export default class SpotifyApi {
 
     getUser = async (id: string): Promise<UserObjectPublic> => {
         await this.verifyCredentials()
-        return await this.spotifyAPI.getUser(id) as UserObjectPublic
+        return (await this.spotifyAPI.getUser(id)) as UserObjectPublic
     }
 }
 
@@ -140,22 +140,21 @@ interface ClientCredentialsGrantResponseEX {
 export interface UserObjectPublic {
     display_name?: string
     external_urls?: {
-        spotify :string
-    };
+        spotify: string
+    }
     followers?: {
-        href?: null,
+        href?: null
         total: string
     }
-    href?: string;
+    href?: string
     id?: string
     images?: ImageObject[]
-    type?: "user"
+    type?: 'user'
     uri?: string
 }
 
-export interface  ImageObject {
-
-    height?: number;
-    url: string;
-    width?: number;
+export interface ImageObject {
+    height?: number
+    url: string
+    width?: number
 }
