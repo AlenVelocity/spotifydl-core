@@ -183,5 +183,4 @@ export default class SpotifyFetcher extends SpotifyApi {
     }
 
     getSpotifyUser = async (id: string): Promise<UserObjectPublic> => await this.getUser(id)
-
 }
