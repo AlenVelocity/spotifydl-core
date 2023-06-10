@@ -116,6 +116,65 @@ const links = {
 //spotify.verifyCredentials().then(() => Promise.all([spotify.getTrack(links.song), spotify.getAlbum(links.album), spotify.getArtistAlbums(links.artist)]).then(console.log))
 ```
 
+## Example Download Song by Url
+```JS
+const fs = require('fs-extra') 
+// Initialization and Authentication 
+const Spotify = require('spotifydl-core').default // Import the library 
+const spotify = new Spotify({ // Authentication
+    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3', // <-- add your own clientId 
+    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009', // <-- add your own clientSecret 
+})
+/* To learn more about clientId and Secret  , 
+visit https://developer.spotify.com/documentation/general/guides/app-settings/ 
+*/
+
+// Declaring the respective url in 'links' object 
+const links = {
+    song: 'https://open.spotify.com/track/1Ub6VfiTXgyV8HnsfzrZzC?si=4412ef4ebd8141ab' // Url of the song you want to gather info about or download
+};
+
+// Engine 
+(async () => {
+    const data = await spotify.getTrack(links.song) // Waiting for the data 🥱
+    console.log('Downloading: ', data.name, 'by:', data.artists.join(' ')) // Keep an eye on the progress
+    const song = await spotify.downloadTrack(links.song) // Downloading goes brr brr 
+    fs.writeFileSync('song.mp3', song) // Let's write the buffer to the woofer (i mean file, hehehe) 
+})()
+
+```
+
+## Example Download All Song From Album
+```JS
+const fs = require('fs-extra') 
+// Initialization and Authentication 
+const Spotify = require('spotifydl-core').default // Import the library 
+const spotify = new Spotify({ // Authentication
+    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3', // <-- add your own clientId 
+    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009', // <-- add your own clientSecret 
+})
+/* To learn more about clientId and Secret  , 
+visit https://developer.spotify.com/documentation/general/guides/app-settings/ 
+*/
+
+// Declaring the respective url in 'links' object 
+const links = {
+    album: 'https://open.spotify.com/album/3u3WsbVPLT0fXiClx9GYD9?si=pfGAdL3VRiid0M3Ln_0DNg', // Url of the album you want to gather info about
+};
+
+const album = await spotify.getTracksFromAlbum(links.album);
+const downloadAlbum = await spotify.downloadAlbum(links.album);
+
+// Engine 
+
+album.tracks.forEach(async (data, index) => {
+   console.log('Downloading: ', data.name, 'by:', data.artists.join(' ')) // Keep an eye on the progress
+   const filename = data.name + ' by:' + data.artists.join(' ');
+   fs.writeFileSync(filename + '.mp3', downloadAlbum[index]) // Let's write the buffer to the woofer (i mean file, hehehe)
+});
+
+```
+
 # 🙇‍ Special Thanks
 
 - Swapnil Soni: [Spotify-dl](https://github.com/SwapnilSoni1999/spotify-dl)
