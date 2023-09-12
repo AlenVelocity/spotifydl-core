@@ -1,5 +1,5 @@
 import os from 'os'
-import ytdl from 'ytdl-core'
+import ytdl from '@distube/ytdl-core'
 import SpotifyDlError from './Error'
 import { readFile, unlink, writeFile } from 'fs-extra'
 import axios from 'axios'
