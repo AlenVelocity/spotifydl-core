@@ -6,6 +6,7 @@ export default class TrackDetails implements ITrack {
         public artists: string[] = [],
         public album_name = '',
         public release_date = '',
-        public cover_url = ''
-    ) {}
+        public cover_url = '',
+        public duration_ms = 0
+    ) { }
 }
