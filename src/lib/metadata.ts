@@ -10,12 +10,19 @@ export default async (data: ITrack, file: string): Promise<string> => {
         album: data.album_name,
         artist: data.artists,
         date: data.release_date
-        //attachments: []
+        attachments: [data.cover_url]
     }
 
     Object.keys(metadata).forEach((key) => {
-        outputOptions.push('-metadata', `${String(key)}=${metadata[key as 'title' | 'artist' | 'date' | 'album']}`)
-    })
+        if (key === 'attachments') {
+            // Attach cover image
+            metadata[key].forEach((attachment: string) => {
+                outputOptions.push('-attach', attachment);
+            });
+        } else {
+            outputOptions.push('-metadata', `${String(key)}=${metadata[key as 'title' | 'artist' | 'date' | 'album']}`);
+        }
+    });
 
     const out = `${file.split('.')[0]}_temp.mp3`
     await new Promise((resolve, reject) => {
