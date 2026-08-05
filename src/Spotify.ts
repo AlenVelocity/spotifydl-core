@@ -20,7 +20,12 @@ export default class SpotifyFetcher extends SpotifyApi {
      */
     getTrack = async (url: string): Promise<SongDetails> => {
         await this.verifyCredentials()
-        return await this.extractTrack(this.getID(url))
+        const isEpisode = url.includes('/episode/')
+        const id = this.getID(url)
+        if (isEpisode) {
+            return await this.extractEpisode(id)
+        }
+        return await this.extractTrack(id)
     }
 
     /**
@@ -80,7 +85,7 @@ export default class SpotifyFetcher extends SpotifyApi {
 
     getID = (url: string): string => {
         const splits = url.split('/')
-        return splits[splits.length - 1]
+        return splits[splits.length - 1].split('?')[0]
     }
 
     /**

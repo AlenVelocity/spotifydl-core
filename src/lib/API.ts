@@ -52,6 +52,17 @@ export default class SpotifyApi {
         return details
     }
 
+    extractEpisode = async (episodeId: string): Promise<TrackDetails> => {
+        const data = (await this.spotifyAPI.getEpisode(episodeId)).body
+        const details = new TrackDetails()
+        details.name = data.name
+        details.artists = data.show?.publisher ? [data.show.publisher] : []
+        details.album_name = data.show?.name || ''
+        details.release_date = data.release_date
+        details.cover_url = data.images[0]?.url || ''
+        return details
+    }
+
     extractPlaylist = async (playlistId: string): Promise<Playlist> => {
         const data = (await this.spotifyAPI.getPlaylist(playlistId)).body
         const details = new Playlist(
